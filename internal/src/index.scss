@@ -1,0 +1,124 @@
+@charset "utf-8";
+// You can import only what you need from Bulma, and customize it with your own Sass values.
+// To achieve this:
+// set your own Sass variables
+// import bulma/sass/utilities
+// override Bulma’s variables by providing the with keyword with your own Sass map
+// if you need to, do the same for the bulma/sass/form folder
+// import the Bulma components you need with either @use or @forward
+// finally, import the Bulma themes from bulma/sass/themes
+
+// Variables: Define your Sass variables first so they can be used in the rest of the file.
+$brand-radius:0.0em;
+$brand-color-dark:#2172b4;
+$brand-color:#3e8ed0;
+$brand-color-light:#53a4e7;
+$brand-color-lighter:#81c1f5;
+$brand-color-lightest:#aedbff;
+
+// Lolland colors Pantone 294
+$dark-blue: #003478;
+$dark-blue-80: #335d93;
+$dark-blue-60: #6685ae;
+$dark-blue-40: #99aec9;
+$dark-blue-20: #ccd6e4;
+
+// Lolland colors Pantone 369
+$green: #58a618;
+$green-80: #70b65f;
+$green-60: #91c483;
+$green-40: #bcd5a7;
+$green-20: #d5e7cf;
+
+// Lolland colors Pantone 2905
+$light-blue: #8fc9e6;
+$light-blue-80: #a4d4e4;
+$light-blue-60: #bbdef0;
+$light-blue-40: #d2e9f3;
+$light-blue-20: #e8f3f8;
+
+// Lolland colors Pantone 638
+$blue-green: #009bbb;
+$blue-green-80: #33afc9;
+$blue-green-60: #66c3d6;
+$blue-green-40: #99d7e4;
+$blue-green-20: #ccebf1;
+
+// Lolland colors Pantone 382
+$lime-green: #bed600;
+$lime-green-80: #cbde33;
+$lime-green-60: #d8e666;
+$lime-green-40: #e5ef99;
+$lime-green-20: #f2f7cc;
+
+// Lolland colors Pantone 5825
+$umbra: #827c34;
+$umbra-80: #9b965d;
+$umbra-60: #b4b085;
+$umbra-40: #cdcbae;
+$umbra-20: #e6e5d6;
+
+// Add a serif family
+$family-serif: 'Verdana', 'Georgia', serif;
+
+// 
+
+// To overwrite Bulma’s Sass variables with your own value, write @use and the with keyword, which takes a Sass map:
+@use '../node_modules/bulma/sass' with (
+  $family-primary: $family-serif,
+  $primary: $brand-color,
+  $link: $brand-color,
+  $info: $brand-color,
+  // $control-border-width: 2px
+  $radius-small: $brand-radius,
+  $radius: $brand-radius,
+  $radius-medium: $brand-radius,
+  $radius-large:  $brand-radius,
+  $custom-colors:(
+    'umbra-dark':($umbra),
+    'umbra': ($umbra-80),
+    'umbra-light': ($umbra-60),
+    'umbra-lighter': ($umbra-40),
+    'umbra-lightest': ($umbra-20),
+    'brand':($brand-color)
+  )
+);
+
+
+//Specific Component Styles: Define styles for specific components.
+.noHover {
+  pointer-events: none;
+}
+
+.radio-list {
+  .radio {
+    display: block;
+    input {
+      margin-right: 0.5em;
+    }
+
+    & + .radio {
+      margin-left: 0;
+      margin-top: .5em;
+    }
+  }
+}
+.vertical-input {
+    input {
+      margin-right: 0.5em;
+    }
+
+}
+// span.navigation-text{
+//     color: #fff;
+//    }
+//    a.navbar-link:not(:hover){
+//        background-color: #3e8ed0 !important;
+//    }
+//    a.navbar-item:focus-within{
+//        background-color: #3e8ed0 !important;
+//    }
+//    .is-on{
+//        font-weight: bold;
+//    }
+
