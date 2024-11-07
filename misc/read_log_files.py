@@ -1,15 +1,44 @@
-import os  # Importerer os-modulet, som tillader interaktion med operativsystemet
+import os
+import json  # Importerer json-modulet
 
 def check_error_in_files(directory):
-    # Går igennem hver fil i den angivne mappe
+    results = []
     for filename in os.listdir(directory):
-        filepath = os.path.join(directory, filename)  # Kombinerer mappenavn og filnavn til fuld sti
-        if os.path.isfile(filepath):  # Tjekker, om stien er en fil (og ikke en mappe)
-            with open(filepath, 'r') as file:  # Åbner filen i læsetilstand
-                lines = file.readlines()  # Læser alle linjer i filen
-                if lines and 'ERROR' in lines[-1]:  # Tjekker om der er linjer og om sidste linje indeholder 'ERROR'
-                    print(f"Filnavn: {filename}, Linje: {lines[-1]}")  # Printer filnavnet og den sidste linje
+        filepath = os.path.join(directory, filename)
+        if os.path.isfile(filepath):
+            with open(filepath, 'r') as file:
+                lines = file.readlines()
+                status = 'Empty'
+                last_susses = None
+                last_error = None
+                last_empty = None
+                
+                for line in lines:
+                    if 'ERROR' in line:
+                        status = 'ERROR'
+                        last_error = line.strip().split('; ')[0]
+                    elif 'SUCCES' in line:
+                        status = 'OK'
+                        last_susses = line.strip().split('; ')[0]
+                    else:
+                        status = 'Empty'
+                        last_empty = line.strip()
+                
+                results.append({
+                    'filename': filename,
+                    'status': status,
+                    'last_susses': last_susses,
+                    'last_error': last_error,
+                    'last_empty': last_empty
+                })
+    
+    return results
 
-# Brug funktionen ved at angive mappenavn:
 mappe_sti = r"\\lkgis01\spatialsuite\fme_jobs_log"
-check_error_in_files(mappe_sti)  # Kalder funktionen med stien til din mappe
+resultater = check_error_in_files(mappe_sti)
+
+# Konverterer resultaterne til JSON-streng
+resultater_json = json.dumps(resultater)
+
+# Udskriver JSON-objektet som streng
+print(resultater_json)

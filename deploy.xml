@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy>
     <version>1.0.0</version>                  <!-- The version of this module -->
+	<copydir fromdir="[module:fme_dashboard.dir]/dist" replacetext="true" todir="[cbinfo.wwwroot.dir]/modules/fme_dashboard"/>
 </deploy>

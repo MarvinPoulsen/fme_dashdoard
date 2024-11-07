@@ -1,24 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pages>
 
-    <!--   
-    ===============================================================
-    SpatialMap, copyright Sweco GIS&IT
-    ===============================================================
-    $URL: http://vinkel.ghop.lan/svn/SPS/maven/spatialmap-pom/trunk/spatialmap-webapp-demo/src/main/webapp/WEB-INF/config/modules/standard/drawings/pages/pages.xml $  
-    $Date: 2020-09-28 13:59:26 +0200 (ma, 28 sep. 2020) $
-    $Revision: 27608 $   
-    $LastChangedBy: nsm $
-    =============================================================== 
-    -->
-
-	<page name="python-run" contenttype="json" jsonformat="compact">
+	<page name="read-log-files-run" contenttype="json" jsonformat="compact">
 		<data handler="process" operation="run">
 			<url-parameters>
-				<!-- <url-parameter name="cmd">"C:\Program Files\Python311\python.exe 'C:\spatialsuite-4.5.0\sites\...</url-parameter> -->
-				<!-- works with python 3.9.13  -->
-				<!-- <url-parameter name="cmd">"C:\Users\marpo\AppData\Local\Programs\Python\Python39\python.exe '[cbinfo.modules.config.dir]/geometri/misc/read_log_files.py' --esdh=" + id</url-parameter> -->
-				<url-parameter name="cmd">"C:\Users\marpo\AppData\Local\Programs\Python\Python39\python.exe '[cbinfo.modules.config.dir]/geometri/misc/read_log_files.py'</url-parameter>
+                <!-- Ret sti til python på drift -->
+				<url-parameter name="cmd">"C:\Users\marpo\AppData\Local\Programs\Python\Python39\python.exe '[cbinfo.modules.config.dir]/fme_dashboard/misc/read_log_files.py'</url-parameter>
 			</url-parameters>
 		</data>        
 	</page>
